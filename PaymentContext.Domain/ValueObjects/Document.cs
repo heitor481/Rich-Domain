@@ -14,5 +14,10 @@ namespace PaymentContext.Domain.ValueObjects
         public string Number { get; private set; }
 
         public EdocumentType Type { get; private set; }
+
+        private bool Validate()
+        {
+            return true;
+        }
     }
 }
