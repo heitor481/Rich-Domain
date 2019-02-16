@@ -12,7 +12,7 @@ namespace PaymentContext.Domain.ValueObjects
 
             AddNotifications(new Contract()
                 .Requires()
-                .IsEmail(this.Address, "Email.Adrress", "Email invaldio")
+                .IsEmail(address, "Email.Adrress", "Email invaldio")
             );
         }
 

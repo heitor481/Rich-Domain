@@ -1,5 +1,6 @@
 using PaymentContext.Domain.Enums;
 using PaymentContext.Shared.ValueObjects;
+using Flunt.Validations;
 
 namespace PaymentContext.Domain.ValueObjects
 {
@@ -14,6 +15,13 @@ namespace PaymentContext.Domain.ValueObjects
             this.State = state;
             this.Country = country;
             this.Zip = zip;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(this.Street, 3, "Address.Street", "A rua precisa ter 3 caracteres")
+                .HasMinLen(this.City, 3, "Address.City", "A cidade precisa de 3 caracteres")
+                .HasMinLen(this.State, 3, "Address.State", "O estado precisa de 3 caracteres")
+            );
         }
 
         public string Street { get; private set; }

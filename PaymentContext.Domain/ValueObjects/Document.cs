@@ -1,5 +1,6 @@
 using PaymentContext.Domain.Enums;
 using PaymentContext.Shared.ValueObjects;
+using Flunt.Validations;
 
 namespace PaymentContext.Domain.ValueObjects
 {
@@ -9,6 +10,11 @@ namespace PaymentContext.Domain.ValueObjects
         {
             this.Number = number;
             this.Type = type;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .IsTrue(Validate(), "Document.Number", "Documento inválido")
+            );
         }
 
         public string Number { get; private set; }
@@ -17,7 +23,11 @@ namespace PaymentContext.Domain.ValueObjects
 
         private bool Validate()
         {
-            return true;
+            if(this.Type == EdocumentType.CNPJ && this.Number.Length == 14) { return true; }
+
+            if(this.Type == EdocumentType.CPF && this.Number.Length == 11) { return true; }
+
+            return false;
         }
     }
 }
