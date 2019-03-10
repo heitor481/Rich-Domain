@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using PaymentContext.Shared.Entities;
 using Flunt.Validations;
+using System.Linq;
 
 namespace PaymentContext.Domain.Entities
 {
