@@ -3,7 +3,7 @@ using PaymentContext.Domain.Enums;
 
 namespace PaymentContext.Domain.Commands
 {
-    public class CreatePayPalSubscriptionCommand
+    public class CreateBoletoSubscriptionCommand
     {
         public string FirstName { get; set; }
 
@@ -13,7 +13,9 @@ namespace PaymentContext.Domain.Commands
 
         public string Email { get; set; }
 
-        public string TransactionCode { get; set; }
+        public string BarCode { get; set; }
+
+        public string BoletoNumber { get; set; }
 
         public string PaymentNNumber { get; set; }
 
@@ -46,7 +48,5 @@ namespace PaymentContext.Domain.Commands
         public string Country { get;  set; }
 
         public string Zip { get;  set; }
-
-       
     }
 }
